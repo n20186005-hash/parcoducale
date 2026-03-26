@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Gallery from '@/components/Gallery';
+import ThemeToggle from '@/components/ThemeToggle';
 import Link from 'next/link';
 
 const baseUrl = 'https://www.parcoducale.com';
@@ -99,7 +100,8 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         <div className="text-white font-bold text-xl tracking-wider shadow-sm">
           PARCO DUCALE
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-3 items-center">
+          <ThemeToggle />
           <div className="bg-white/10 hover:bg-white/20 text-white rounded-full px-4 py-2 flex gap-4 backdrop-blur-md border border-white/20 transition-all text-sm font-medium">
             <Link href="/it" className={`hover:text-accent transition-colors ${isIt ? 'text-accent' : ''}`}>IT</Link>
             <Link href="/en" className={`hover:text-accent transition-colors ${isEn ? 'text-accent' : ''}`}>EN</Link>
@@ -112,7 +114,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       {/* 首页首屏背景图 (Hero) */}
       <section 
         className="relative w-full h-screen flex flex-col items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/images (1).jpg')" }}
+        style={{ backgroundImage: "url('/gallery/images (1).jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-bg"></div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl pt-20">
@@ -330,15 +332,29 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       </section>
 
       {/* 攝影相簿 */}
-      <section className="py-16 px-4 max-w-6xl mx-auto border-b border-theme">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Galleria / Gallery</h2>
-          <p className="text-secondary mb-2">
+      <section className="py-20 px-4 max-w-6xl mx-auto border-b border-theme">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-6 relative inline-block">
+            Galleria / Gallery
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-accent rounded-full"></div>
+          </h2>
+          <p className="text-secondary mb-4 text-lg">
             {isZh ? '照片集說明來自 Google Maps，最近更新於 2026 年。' : 
              isFr ? 'Les descriptions de la galerie de photos proviennent de Google Maps, dernière mise à jour en 2026.' : 
              isIt ? 'Le descrizioni della galleria fotografica provengono da Google Maps, ultimo aggiornamento nel 2026.' : 
              'Photo gallery descriptions are from Google Maps, last updated in 2026.'}
           </p>
+          <a 
+            href="https://maps.app.goo.gl/rgXRvr9ynZBVajFfA" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-accent hover:underline inline-flex items-center gap-2 font-medium text-lg"
+          >
+            {isZh ? '如需查看所有圖片，請點擊箭頭跳轉連結' : 
+             isFr ? 'Pour voir toutes les images, veuillez cliquer sur la flèche pour suivre le lien' : 
+             isIt ? 'Per visualizzare tutte le immagini, fai clic sulla freccia per seguire il link' : 
+             'To view all images, please click the arrow to follow the link'} &rarr;
+          </a>
         </div>
         
         <Gallery />

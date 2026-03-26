@@ -4,14 +4,18 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const images = [
-  { src: '/images (1).jpg', alt: 'Parco Ducale View 1' },
-  { src: '/images (2).jpg', alt: 'Parco Ducale View 2' },
-  { src: '/images (3).jpg', alt: 'Parco Ducale View 3' },
-  { src: '/images (4).jpg', alt: 'Parco Ducale View 4' },
-  { src: '/images (5).jpg', alt: 'Parco Ducale View 5' },
-  { src: '/images (6).jpg', alt: 'Parco Ducale View 6' },
-  { src: '/images (7).jpg', alt: 'Parco Ducale View 7' },
-  { src: '/images (8).jpg', alt: 'Parco Ducale View 8' },
+  { src: '/gallery/images (1).jpg', alt: 'Parco Ducale View 1' },
+  { src: '/gallery/images (2).jpg', alt: 'Parco Ducale View 2' },
+  { src: '/gallery/images (3).jpg', alt: 'Parco Ducale View 3' },
+  { src: '/gallery/images (4).jpg', alt: 'Parco Ducale View 4' },
+  { src: '/gallery/images (5).jpg', alt: 'Parco Ducale View 5' },
+  { src: '/gallery/images (6).jpg', alt: 'Parco Ducale View 6' },
+  { src: '/gallery/images (7).jpg', alt: 'Parco Ducale View 7' },
+  { src: '/gallery/images (8).jpg', alt: 'Parco Ducale View 8' },
+  { src: '/gallery/images (9).jpg', alt: 'Parco Ducale View 9' },
+  { src: '/gallery/images (10).jpg', alt: 'Parco Ducale View 10' },
+  { src: '/gallery/images (11).jpg', alt: 'Parco Ducale View 11' },
+  { src: '/gallery/images (12).jpg', alt: 'Parco Ducale View 12' },
 ];
 
 export default function Gallery() {
@@ -37,9 +41,9 @@ export default function Gallery() {
 
   return (
     <div>
-      {/* Thumbnail Grid */}
+      {/* Thumbnail Grid - Only show first 6 images */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {images.map((img, idx) => (
+        {images.slice(0, 6).map((img, idx) => (
           <div 
             key={idx} 
             className="cursor-pointer overflow-hidden rounded-lg aspect-[4/3] relative group"
