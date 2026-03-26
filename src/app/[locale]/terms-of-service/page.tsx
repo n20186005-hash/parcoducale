@@ -18,7 +18,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
         'zh-Hant': `${baseUrl}/zh-Hant${path}`,
         'fr': `${baseUrl}/fr${path}`,
         'it': `${baseUrl}/it${path}`,
-        'x-default': `${baseUrl}/en${path}`,
+        'x-default': `${baseUrl}/it${path}`,
       },
     },
   };

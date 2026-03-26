@@ -6,7 +6,6 @@ const baseUrl = 'https://www.parcoducale.com';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const path = '';
-  const isDefault = locale === 'it';
   
   return {
     title: locale === 'zh-Hant' ? '首頁 | Parco Ducale' : 
@@ -14,13 +13,13 @@ export async function generateMetadata({ params: { locale } }: { params: { local
            locale === 'en' ? 'Home | Parco Ducale' : 
            'Home | Parco Ducale',
     alternates: {
-      canonical: isDefault ? baseUrl : `${baseUrl}/${locale}`,
+      canonical: `${baseUrl}/${locale}`,
       languages: {
         'en': `${baseUrl}/en`,
         'zh-Hant': `${baseUrl}/zh-Hant`,
         'fr': `${baseUrl}/fr`,
-        'it': `${baseUrl}`,
-        'x-default': `${baseUrl}`,
+        'it': `${baseUrl}/it`,
+        'x-default': `${baseUrl}/it`,
       },
     },
   };
