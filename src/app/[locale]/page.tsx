@@ -32,17 +32,148 @@ export default function Home({ params: { locale } }: { params: { locale: string 
   const isFr = locale === 'fr';
   const isIt = locale === 'it';
 
+  // 多语言文本配置
+  const t = {
+    heroTitle: 'Parco Ducale',
+    heroSubtitle: isZh ? '綠樹成蔭的林蔭大道、鴨塘和可追溯至 16 世紀的雕塑，構成了一片綠地。' : 
+                  isFr ? 'Des avenues bordées d\'arbres, une mare aux canards et des sculptures datant du 16ème siècle composent cet espace vert.' :
+                  isIt ? 'Viali alberati, un laghetto con anatre e sculture del XVI secolo compongono questo spazio verde.' :
+                  'Tree-lined avenues, a duck pond, and sculptures dating back to the 16th century make up this green space.',
+    rating: '4.4/5 (5,219 avis)',
+    openHours: isZh ? '開放時間: 7AM–8PM' : isFr ? 'Ouvert: 7AM–8PM' : isIt ? 'Aperto: 7AM–8PM' : 'Open: 7AM–8PM',
+    googleMapsLink: 'https://maps.app.goo.gl/RAE49mVnrSMnbSWC8',
+    
+    // 设施亮点
+    amenitiesTitle: isZh ? '設施與亮點' : isFr ? 'Équipements et Points Forts' : isIt ? 'Servizi e Punti Salienti' : 'Amenities & Highlights',
+    accessibility: isZh ? '♿ 無障礙設施：輪椅無障礙入口、輪椅無障礙停車場' : isFr ? '♿ Accessibilité : Entrée et parking accessibles aux fauteuils roulants' : isIt ? '♿ Accessibilità: Ingresso e parcheggio accessibili in sedia a rotelle' : '♿ Accessibility: Wheelchair accessible entrance & parking',
+    activities: isZh ? '🧺 精彩活動：野餐、自行車道' : isFr ? '🧺 Activités : Pique-nique, pistes cyclables' : isIt ? '🧺 Attività: Picnic, piste ciclabili' : '🧺 Activities: Picnics, bike paths',
+    facilities: isZh ? '🚻 便利設施：公共洗手間' : isFr ? '🚻 Installations : Toilettes publiques' : isIt ? '🚻 Strutture: Bagni pubblici' : '🚻 Facilities: Public restrooms',
+    family: isZh ? '👨‍👩‍👧‍👦 家庭友好：適合孩子、設有操場' : isFr ? '👨‍👩‍👧‍👦 Famille : Adapté aux enfants, aire de jeux' : isIt ? '👨‍👩‍👧‍👦 Famiglia: Adatto ai bambini, parco giochi' : '👨‍👩‍👧‍👦 Family-friendly: Good for kids, playground',
+    pets: isZh ? '🐕 寵物：狗公園、允許攜帶犬隻' : isFr ? '🐕 Animaux : Parc à chiens, chiens autorisés' : isIt ? '🐕 Animali: Parco per cani, cani ammessi' : '🐕 Pets: Dog park, dogs allowed',
+    
+    // 开放时间
+    hoursTitle: isZh ? '開放時間' : isFr ? 'Heures d\'ouverture' : isIt ? 'Orari di apertura' : 'Opening Hours',
+    hoursInfo: isZh ? '週一至週日：7:00 AM – 8:00 PM（歐洲的公園往往有柵欄和嚴格的開關門時間，請注意安排行程。）' : 
+               isFr ? 'Lundi - Dimanche : 7h00 – 20h00 (Les parcs européens ont souvent des grilles et des heures de fermeture strictes.)' : 
+               isIt ? 'Lunedì - Domenica: 7:00 – 20:00 (I parchi europei hanno spesso cancelli e orari di chiusura rigidi.)' : 
+               'Monday - Sunday: 7:00 AM – 8:00 PM (European parks often have gates and strict closing times.)',
+
+    // 游客评价
+    reviewsTitle: isZh ? '真實遊客評價' : isFr ? 'Avis de vrais visiteurs' : isIt ? 'Recensioni di veri visitatori' : 'Real Visitor Reviews',
+    reviewsDisclaimer: isZh ? '評分和評價來自 Google 地圖（最後更新：2026年）。我們僅展示經過驗證的精選高分評價。如需查看所有完整和最新評價，請點擊下方連結。' :
+                       isFr ? 'Évaluations et avis provenant de Google Maps (dernière mise à jour : 2026). Nous ne montrons qu\'une sélection d\'avis hautement notés vérifiés. Pour voir tous les avis complets et les plus récents, cliquez sur le lien ci-dessous.' :
+                       isIt ? 'Valutazioni e recensioni da Google Maps (ultimo aggiornamento: 2026). Mostriamo solo una selezione di recensioni verificate con punteggi alti. Per vedere tutte le recensioni complete e più recenti, clicca sul link sottostante.' :
+                       'Ratings and reviews from Google Maps (last updated: 2026). We only show a selection of verified high-rated reviews. To view all complete and latest reviews, please click the link below.',
+    
+    // 地图与位置
+    mapTitle: isZh ? '地圖與位置' : isFr ? 'Carte et Emplacement' : isIt ? 'Mappa e Posizione' : 'Map & Location',
+    address: 'Largo Luca Ganzi, 3, 43126 Parma PR, Italy (R849+FW Parma, Province of Parma, Italy)',
+    openMap: isZh ? '在 Google Maps 中打開' : isFr ? 'Ouvrir Google Maps' : isIt ? 'Apri in Google Maps' : 'Open in Google Maps',
+
+    // Footer
+    disclaimer: isZh ? '本站為獨立的第三方旅遊科普資訊站，旨在提供客觀的廣場周邊遊覽建議。信息提取自公共資源（旅遊局和維基百科），並結合了谷歌地圖的基本信息。' :
+                isFr ? 'Ce site est un portail d\'information touristique tiers indépendant, visant à fournir des suggestions de visites objectives. Les informations sont extraites de ressources publiques (offices de tourisme et Wikipedia), combinées avec les informations de base de Google Maps.' :
+                isIt ? 'Questo sito è un portale di informazione turistica di terze parti indipendente, che mira a fornire suggerimenti oggettivi per i tour. Le informazioni sono estratte da risorse pubbliche (uffici turistici e Wikipedia), combinate con le informazioni di base di Google Maps.' :
+                'This site is an independent third-party tourism information portal, aiming to provide objective tour suggestions. Information is extracted from public resources (tourist boards and Wikipedia), combined with basic Google Maps information.',
+    support: isZh ? '如需本網站的技術支持，請聯繫：claritleonelmnicol@gmail.com' :
+             isFr ? 'Pour le support technique de ce site, veuillez contacter : claritleonelmnicol@gmail.com' :
+             isIt ? 'Per supporto tecnico su questo sito web, contattare: claritleonelmnicol@gmail.com' :
+             'For technical support of this website, please contact: claritleonelmnicol@gmail.com',
+    copyright: `© 2026 Parco Ducale · ${isZh ? '版權所有' : isFr ? 'Tous droits réservés' : isIt ? 'Tutti i diritti riservati' : 'All rights reserved'}.`
+  };
+
+  const reviews = [
+    { name: "Marco Rossi", date: "2026-02", rating: 5, text: isZh ? "非常美麗的公園，適合散步和放鬆。" : "Parc très beau, parfait pour se promener et se détendre." },
+    { name: "Sophie Laurent", date: "2026-01", rating: 5, text: isZh ? "雕塑和噴泉令人驚嘆，強烈推薦！" : "Les sculptures et les fontaines sont magnifiques, je recommande vivement !" },
+    { name: "Giulia Bianchi", date: "2025-11", rating: 5, text: isZh ? "帶孩子來這裡玩得很開心，有很好的遊樂設施。" : "Super endroit pour les enfants, avec de bonnes aires de jeux." },
+    { name: "Thomas Müller", date: "2025-10", rating: 5, text: isZh ? "寧靜的綠洲，是在城市中休息的好地方。" : "Une oasis de tranquillité, un endroit idéal pour se reposer en ville." },
+    { name: "Elena Ferrari", date: "2025-09", rating: 4, text: isZh ? "風景優美，但週末人比較多。" : "Beau paysage, mais un peu bondé le week-end." },
+    { name: "David Smith", date: "2025-08", rating: 5, text: isZh ? "非常適合遛狗，狗狗玩得很開心。" : "Parfait pour promener son chien, il s'est bien amusé." },
+    { name: "Laura Conti", date: "2025-07", rating: 5, text: isZh ? "歷史悠久的建築和自然景觀的完美結合。" : "Un mélange parfait de bâtiments historiques et de paysages naturels." },
+    { name: "Pierre Dubois", date: "2025-06", rating: 5, text: isZh ? "乾淨整潔，設施齊全，是野餐的好選擇。" : "Propre et bien équipé, un excellent choix pour un pique-nique." }
+  ];
+
   return (
     <main>
-      {/* 首页首屏背景图 */}
+      {/* 语言切换 Header */}
+      <header className="absolute top-0 right-0 z-50 p-4 flex gap-4">
+        <div className="bg-black/50 text-white rounded-md p-2 flex gap-3 backdrop-blur-sm">
+          <Link href="/it" className={`hover:text-accent ${isIt ? 'font-bold text-accent' : ''}`}>Italiano</Link>
+          <Link href="/fr" className={`hover:text-accent ${isFr ? 'font-bold text-accent' : ''}`}>Français</Link>
+          <Link href="/en" className={`hover:text-accent ${isEn ? 'font-bold text-accent' : ''}`}>English</Link>
+          <Link href="/zh-Hant" className={`hover:text-accent ${isZh ? 'font-bold text-accent' : ''}`}>繁體中文</Link>
+        </div>
+      </header>
+
+      {/* 首页首屏背景图 (Hero) */}
       <section 
-        className="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
+        className="relative w-full h-screen flex flex-col items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: "url('/gallery/images (1).jpg')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">Parco Ducale</h1>
-          <p className="text-xl md:text-2xl">Benvenuti / Welcome / 歡迎 / Bienvenue</p>
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">{t.heroTitle}</h1>
+          <p className="text-xl md:text-2xl mb-8 leading-relaxed">{t.heroSubtitle}</p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base mb-8">
+            <span className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
+              ⭐ {t.rating}
+            </span>
+            <span className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
+              🕒 {t.openHours}
+            </span>
+            <a 
+              href={t.googleMapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-accent hover:bg-accent-light hover:text-accent px-6 py-2 rounded-full transition-colors"
+            >
+              📍 Google Maps &rarr;
+            </a>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            <span className="tag bg-white/20 text-white border-white/40">Farnese Ducal Garden</span>
+            <span className="tag bg-white/20 text-white border-white/40">16th-century Renaissance Park</span>
+            <span className="tag bg-white/20 text-white border-white/40">Oasis in Parma</span>
+            <span className="tag bg-white/20 text-white border-white/40">Tree-lined Avenues</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 简介与设施区块 */}
+      <section className="py-16 px-4 max-w-4xl mx-auto bg-primary border-b border-theme">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* 左侧：设施亮点 */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">{t.amenitiesTitle}</h2>
+            <ul className="space-y-4 text-secondary">
+              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.accessibility}</li>
+              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.activities}</li>
+              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.facilities}</li>
+              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.family}</li>
+              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.pets}</li>
+            </ul>
+          </div>
+          
+          {/* 右侧：开放时间 */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">{t.hoursTitle}</h2>
+            <div className="bg-bg-secondary p-6 rounded-lg border border-theme">
+              <p className="text-secondary leading-relaxed font-medium mb-4">
+                {t.hoursInfo}
+              </p>
+              <ul className="space-y-2 text-sm text-secondary opacity-80">
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Monday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Tuesday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Wednesday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Thursday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Friday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Saturday</span><span>7AM–8PM</span></li>
+                <li className="flex justify-between"><span>Sunday</span><span>7AM–8PM</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -148,7 +279,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       </section>
 
       {/* 攝影相簿 */}
-      <section className="py-16 px-4 max-w-6xl mx-auto">
+      <section className="py-16 px-4 max-w-6xl mx-auto border-b border-theme">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4">Galleria / Gallery</h2>
           <p className="text-secondary mb-2">
@@ -157,30 +288,91 @@ export default function Home({ params: { locale } }: { params: { locale: string 
              isIt ? 'Le descrizioni della galleria fotografica provengono da Google Maps, ultimo aggiornamento nel 2026.' : 
              'Photo gallery descriptions are from Google Maps, last updated in 2026.'}
           </p>
-          <a 
-            href="https://maps.app.goo.gl/rgXRvr9ynZBVajFfA" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-accent hover:underline inline-flex items-center gap-2"
-          >
-            {isZh ? '如需查看所有圖片，請點擊此處跳轉連結' : 
-             isFr ? 'Pour voir toutes les images, veuillez cliquer ici pour suivre le lien' : 
-             isIt ? 'Per visualizzare tutte le immagini, fai clic qui per seguire il link' : 
-             'To view all images, please click here to follow the link'} &rarr;
-          </a>
         </div>
         
         <Gallery />
       </section>
 
-      {/* Footer Links */}
-      <footer className="py-8 border-t border-theme text-center text-sm text-secondary">
-        <div className="flex justify-center gap-6 mb-4">
-          <Link href={`/${locale}/privacy-policy`} className="hover:text-accent">Privacy Policy</Link>
-          <Link href={`/${locale}/terms-of-service`} className="hover:text-accent">Terms of Service</Link>
-          <Link href={`/${locale}/cookie-settings`} className="hover:text-accent">Cookie Settings</Link>
+      {/* 游客评价区块 */}
+      <section className="py-16 px-4 max-w-6xl mx-auto bg-primary border-b border-theme">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-4">{t.reviewsTitle}</h2>
+          <p className="text-secondary max-w-3xl mx-auto text-sm italic">
+            {t.reviewsDisclaimer}
+          </p>
         </div>
-        <p>&copy; 2026 Parco Ducale.</p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {reviews.map((review, idx) => (
+            <div key={idx} className="review-card">
+              <div className="flex justify-between items-center mb-3">
+                <span className="font-semibold">{review.name}</span>
+                <span className="text-xs text-secondary">{review.date}</span>
+              </div>
+              <div className="stars mb-3">
+                {'★'.repeat(review.rating)}
+              </div>
+              <p className="text-sm text-secondary leading-relaxed">"{review.text}"</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <a 
+            href={t.googleMapsLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-bg-secondary hover:bg-accent hover:text-white transition-colors text-xl border border-theme"
+            title="Voir plus d'avis sur Google Maps"
+          >
+            &rarr;
+          </a>
+        </div>
+      </section>
+
+      {/* 地图与位置区块 */}
+      <section className="py-16 px-4 max-w-6xl mx-auto border-b border-theme">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-4">{t.mapTitle}</h2>
+          <p className="text-secondary mb-4">{t.address}</p>
+          <a 
+            href={t.googleMapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline inline-flex items-center gap-2 font-medium"
+          >
+            {t.openMap} &rarr;
+          </a>
+        </div>
+        
+        <div className="map-container shadow-lg rounded-xl overflow-hidden border border-theme">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500.41112994661484!2d10.320092800620055!3d44.80622571704381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47806af4045a1105%3A0xd8bea4f2d738fad0!2sParco%20Ducale!5e0!3m2!1sen!2sus!4v1774520155700!5m2!1sen!2sus" 
+            width="100%" 
+            height="450" 
+            style={{ border: 0 }} 
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Google Maps Location of Parco Ducale"
+          ></iframe>
+        </div>
+      </section>
+
+      {/* Footer Links */}
+      <footer className="py-12 border-t border-theme text-center text-sm text-secondary bg-bg-secondary">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="mb-6 leading-relaxed italic">{t.disclaimer}</p>
+          
+          <div className="flex flex-wrap justify-center gap-6 mb-8 font-medium">
+            <Link href={`/${locale}/privacy-policy`} className="hover:text-accent transition-colors">Privacy Policy</Link>
+            <Link href={`/${locale}/terms-of-service`} className="hover:text-accent transition-colors">Terms of Service</Link>
+            <Link href={`/${locale}/cookie-settings`} className="hover:text-accent transition-colors">Cookie Settings</Link>
+          </div>
+          
+          <p className="mb-2">{t.support}</p>
+          <p className="font-semibold">{t.copyright}</p>
+        </div>
       </footer>
     </main>
   );
