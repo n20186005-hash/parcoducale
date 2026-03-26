@@ -152,7 +152,10 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4">Galleria / Gallery</h2>
           <p className="text-secondary mb-2">
-            照片集说明來自 Google Maps，最近更新於 2026 年。
+            {isZh ? '照片集說明來自 Google Maps，最近更新於 2026 年。' : 
+             isFr ? 'Les descriptions de la galerie de photos proviennent de Google Maps, dernière mise à jour en 2026.' : 
+             isIt ? 'Le descrizioni della galleria fotografica provengono da Google Maps, ultimo aggiornamento nel 2026.' : 
+             'Photo gallery descriptions are from Google Maps, last updated in 2026.'}
           </p>
           <a 
             href="https://maps.app.goo.gl/rgXRvr9ynZBVajFfA" 
@@ -160,7 +163,10 @@ export default function Home({ params: { locale } }: { params: { locale: string 
             rel="noopener noreferrer"
             className="text-accent hover:underline inline-flex items-center gap-2"
           >
-            如需查看所有图片，請點擊此處跳转連結 &rarr;
+            {isZh ? '如需查看所有圖片，請點擊此處跳轉連結' : 
+             isFr ? 'Pour voir toutes les images, veuillez cliquer ici pour suivre le lien' : 
+             isIt ? 'Per visualizzare tutte le immagini, fai clic qui per seguire il link' : 
+             'To view all images, please click here to follow the link'} &rarr;
           </a>
         </div>
         
