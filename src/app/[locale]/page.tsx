@@ -114,7 +114,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       {/* 首页首屏背景图 (Hero) */}
       <section 
         className="relative w-full h-screen flex flex-col items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/gallery/images%20(1).jpg')" }}
+        style={{ backgroundImage: "url('/gallery/images (1).jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-bg"></div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl pt-20">
