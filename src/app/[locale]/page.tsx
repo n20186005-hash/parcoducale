@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Gallery from '@/components/Gallery';
-import ThemeToggle from '@/components/ThemeToggle';
+import Gallery from '../../components/Gallery';
+import ThemeToggle from '../../components/ThemeToggle';
 import Link from 'next/link';
 
 const baseUrl = 'https://www.parcoducale.com';

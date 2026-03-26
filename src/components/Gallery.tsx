@@ -4,18 +4,18 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const images = [
-  { src: '/gallery/images (1).jpg', alt: 'Parco Ducale View 1' },
-  { src: '/gallery/images (2).jpg', alt: 'Parco Ducale View 2' },
-  { src: '/gallery/images (3).jpg', alt: 'Parco Ducale View 3' },
-  { src: '/gallery/images (4).jpg', alt: 'Parco Ducale View 4' },
-  { src: '/gallery/images (5).jpg', alt: 'Parco Ducale View 5' },
-  { src: '/gallery/images (6).jpg', alt: 'Parco Ducale View 6' },
-  { src: '/gallery/images (7).jpg', alt: 'Parco Ducale View 7' },
-  { src: '/gallery/images (8).jpg', alt: 'Parco Ducale View 8' },
-  { src: '/gallery/images (9).jpg', alt: 'Parco Ducale View 9' },
-  { src: '/gallery/images (10).jpg', alt: 'Parco Ducale View 10' },
-  { src: '/gallery/images (11).jpg', alt: 'Parco Ducale View 11' },
-  { src: '/gallery/images (12).jpg', alt: 'Parco Ducale View 12' },
+  { src: '/gallery/images (1).jpg', alt: 'Palazzo Ducale - The magnificent Ducal Palace view from the park' },
+  { src: '/gallery/images (2).jpg', alt: 'Tree-lined Avenues - Historic pathways perfect for a tranquil stroll' },
+  { src: '/gallery/images (3).jpg', alt: 'Artificial Lake - The serene pond reflecting the surrounding nature' },
+  { src: '/gallery/images (4).jpg', alt: 'Fontana del Trianon - The iconic fountain and its classical beauty' },
+  { src: '/gallery/images (5).jpg', alt: 'Boudard Sculptures - Monumental marble vases and statues' },
+  { src: '/gallery/images (6).jpg', alt: 'Palazzetto Eucherio Sanvitale - Renaissance-style architecture' },
+  { src: '/gallery/images (7).jpg', alt: 'Lush Greenery - Ancient trees and broad lawns of the Oasis' },
+  { src: '/gallery/images (8).jpg', alt: 'Duck Pond - A family-friendly spot to feed ducks and turtles' },
+  { src: '/gallery/images (9).jpg', alt: 'Gravel Paths - Exploring the remains of the Arcadia woods' },
+  { src: '/gallery/images (10).jpg', alt: 'Park Entrance - Gateway to the 16th-century Renaissance Park' },
+  { src: '/gallery/images (11).jpg', alt: 'Autumn Colors - Seasonal beauty in the heart of Parma' },
+  { src: '/gallery/images (12).jpg', alt: 'Sunset View - A magical atmosphere as evening approaches' },
 ];
 
 export default function Gallery() {
