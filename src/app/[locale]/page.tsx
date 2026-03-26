@@ -95,81 +95,133 @@ export default function Home({ params: { locale } }: { params: { locale: string 
   return (
     <main>
       {/* 语言切换 Header */}
-      <header className="absolute top-0 right-0 z-50 p-4 flex gap-4">
-        <div className="bg-black/50 text-white rounded-md p-2 flex gap-3 backdrop-blur-sm">
-          <Link href="/it" className={`hover:text-accent ${isIt ? 'font-bold text-accent' : ''}`}>Italiano</Link>
-          <Link href="/fr" className={`hover:text-accent ${isFr ? 'font-bold text-accent' : ''}`}>Français</Link>
-          <Link href="/en" className={`hover:text-accent ${isEn ? 'font-bold text-accent' : ''}`}>English</Link>
-          <Link href="/zh-Hant" className={`hover:text-accent ${isZh ? 'font-bold text-accent' : ''}`}>繁體中文</Link>
+      <header className="absolute top-0 w-full z-50 p-6 flex justify-between items-center">
+        <div className="text-white font-bold text-xl tracking-wider shadow-sm">
+          PARCO DUCALE
+        </div>
+        <div className="flex gap-4">
+          <div className="bg-white/10 hover:bg-white/20 text-white rounded-full px-4 py-2 flex gap-4 backdrop-blur-md border border-white/20 transition-all text-sm font-medium">
+            <Link href="/it" className={`hover:text-accent transition-colors ${isIt ? 'text-accent' : ''}`}>IT</Link>
+            <Link href="/en" className={`hover:text-accent transition-colors ${isEn ? 'text-accent' : ''}`}>EN</Link>
+            <Link href="/fr" className={`hover:text-accent transition-colors ${isFr ? 'text-accent' : ''}`}>FR</Link>
+            <Link href="/zh-Hant" className={`hover:text-accent transition-colors ${isZh ? 'text-accent' : ''}`}>ZH</Link>
+          </div>
         </div>
       </header>
 
       {/* 首页首屏背景图 (Hero) */}
       <section 
         className="relative w-full h-screen flex flex-col items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/gallery/images (1).jpg')" }}
+        style={{ backgroundImage: "url('/images (1).jpg')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">{t.heroTitle}</h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">{t.heroSubtitle}</p>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-bg"></div>
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl pt-20">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight drop-shadow-lg">{t.heroTitle}</h1>
+          <p className="text-xl md:text-2xl mb-10 leading-relaxed font-light drop-shadow-md opacity-90">{t.heroSubtitle}</p>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm md:text-base mb-8">
-            <span className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
-              ⭐ {t.rating}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm md:text-base mb-10 font-medium">
+            <span className="flex items-center gap-2 bg-black/30 hover:bg-black/50 px-6 py-3 rounded-full backdrop-blur-md border border-white/10 transition-all">
+              <span className="text-yellow-400">★</span> {t.rating}
             </span>
-            <span className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
+            <span className="flex items-center gap-2 bg-black/30 hover:bg-black/50 px-6 py-3 rounded-full backdrop-blur-md border border-white/10 transition-all">
               🕒 {t.openHours}
             </span>
             <a 
               href={t.googleMapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-accent hover:bg-accent-light hover:text-accent px-6 py-2 rounded-full transition-colors"
+              className="flex items-center gap-2 bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full transition-all transform hover:scale-105 shadow-lg font-bold"
             >
               📍 Google Maps &rarr;
             </a>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mt-4">
-            <span className="tag bg-white/20 text-white border-white/40">Farnese Ducal Garden</span>
-            <span className="tag bg-white/20 text-white border-white/40">16th-century Renaissance Park</span>
-            <span className="tag bg-white/20 text-white border-white/40">Oasis in Parma</span>
-            <span className="tag bg-white/20 text-white border-white/40">Tree-lined Avenues</span>
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-colors">Farnese Ducal Garden</span>
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-colors">16th-century Renaissance Park</span>
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-colors">Oasis in Parma</span>
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-colors">Tree-lined Avenues</span>
           </div>
+        </div>
+        
+        <div className="absolute bottom-8 animate-bounce text-white/70">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </section>
 
       {/* 简介与设施区块 */}
-      <section className="py-16 px-4 max-w-4xl mx-auto bg-primary border-b border-theme">
-        <div className="grid md:grid-cols-2 gap-12">
+      <section className="py-20 px-4 max-w-5xl mx-auto bg-primary">
+        <div className="grid md:grid-cols-2 gap-16">
           {/* 左侧：设施亮点 */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">{t.amenitiesTitle}</h2>
-            <ul className="space-y-4 text-secondary">
-              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.accessibility}</li>
-              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.activities}</li>
-              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.facilities}</li>
-              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.family}</li>
-              <li className="flex items-start bg-bg-secondary p-3 rounded-lg">{t.pets}</li>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-8 relative inline-block">
+                {t.amenitiesTitle}
+                <div className="absolute -bottom-3 left-0 w-12 h-1 bg-accent rounded-full"></div>
+              </h2>
+            </div>
+            <ul className="space-y-5 text-secondary">
+              <li className="flex items-start bg-bg-secondary p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-theme/50">
+                <span className="text-lg leading-relaxed">{t.accessibility}</span>
+              </li>
+              <li className="flex items-start bg-bg-secondary p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-theme/50">
+                <span className="text-lg leading-relaxed">{t.activities}</span>
+              </li>
+              <li className="flex items-start bg-bg-secondary p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-theme/50">
+                <span className="text-lg leading-relaxed">{t.facilities}</span>
+              </li>
+              <li className="flex items-start bg-bg-secondary p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-theme/50">
+                <span className="text-lg leading-relaxed">{t.family}</span>
+              </li>
+              <li className="flex items-start bg-bg-secondary p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-theme/50">
+                <span className="text-lg leading-relaxed">{t.pets}</span>
+              </li>
             </ul>
           </div>
           
           {/* 右侧：开放时间 */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">{t.hoursTitle}</h2>
-            <div className="bg-bg-secondary p-6 rounded-lg border border-theme">
-              <p className="text-secondary leading-relaxed font-medium mb-4">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-8 relative inline-block">
+                {t.hoursTitle}
+                <div className="absolute -bottom-3 left-0 w-12 h-1 bg-accent rounded-full"></div>
+              </h2>
+            </div>
+            <div className="bg-bg-secondary p-8 rounded-2xl shadow-md border border-theme">
+              <p className="text-secondary leading-relaxed font-medium mb-6 text-lg">
                 {t.hoursInfo}
               </p>
-              <ul className="space-y-2 text-sm text-secondary opacity-80">
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Monday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Tuesday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Wednesday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Thursday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Friday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between border-b border-theme/50 pb-1"><span>Saturday</span><span>7AM–8PM</span></li>
-                <li className="flex justify-between"><span>Sunday</span><span>7AM–8PM</span></li>
+              <ul className="space-y-4 text-base text-secondary">
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Monday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Tuesday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Wednesday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Thursday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Friday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-theme/50 pb-3">
+                  <span className="font-medium">Saturday</span>
+                  <span className="bg-black/5 dark:bg-white/10 px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span className="font-medium text-accent">Sunday</span>
+                  <span className="bg-accent/10 text-accent px-3 py-1 rounded-md text-sm font-semibold">7AM–8PM</span>
+                </li>
               </ul>
             </div>
           </div>

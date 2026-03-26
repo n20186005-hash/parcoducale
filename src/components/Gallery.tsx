@@ -4,11 +4,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const images = [
-  { src: '/gallery/images (1).jpg', alt: 'Parco Ducale View 1' },
-  { src: '/gallery/images (2).jpg', alt: 'Parco Ducale View 2' },
-  { src: '/gallery/images (3).jpg', alt: 'Parco Ducale View 3' },
-  { src: '/gallery/images (4).jpg', alt: 'Parco Ducale View 4' },
-  { src: '/gallery/images (5).jpg', alt: 'Parco Ducale View 5' },
+  { src: '/images (1).jpg', alt: 'Parco Ducale View 1' },
+  { src: '/images (2).jpg', alt: 'Parco Ducale View 2' },
+  { src: '/images (3).jpg', alt: 'Parco Ducale View 3' },
+  { src: '/images (4).jpg', alt: 'Parco Ducale View 4' },
+  { src: '/images (5).jpg', alt: 'Parco Ducale View 5' },
+  { src: '/images (6).jpg', alt: 'Parco Ducale View 6' },
+  { src: '/images (7).jpg', alt: 'Parco Ducale View 7' },
+  { src: '/images (8).jpg', alt: 'Parco Ducale View 8' },
 ];
 
 export default function Gallery() {
