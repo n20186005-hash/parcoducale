@@ -73,7 +73,7 @@ const content = {
   }
 };
 
-export default function PrivacyPolicy({ params }: { params: Promise<{ locale: string }> }) {
+export default async function PrivacyPolicy({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const lang = (locale === 'zh-Hant' || locale === 'fr' || locale === 'it') ? locale : 'en';
   const t = content[lang];
