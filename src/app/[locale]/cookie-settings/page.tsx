@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, use } from 'react';
 
 const content = {
   en: {
@@ -82,7 +82,8 @@ const content = {
   }
 };
 
-export default function CookieSettings({ params: { locale } }: { params: { locale: string } }) {
+export default function CookieSettings({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = use(params);
   const lang = (locale === 'zh-Hant' || locale === 'fr' || locale === 'it') ? locale : 'en';
   const t = content[lang];
 

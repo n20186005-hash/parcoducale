@@ -5,7 +5,8 @@ import Link from 'next/link';
 
 const baseUrl = 'https://www.parcoducale.com';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const path = '';
   const canonicalUrl = locale === 'it' ? baseUrl : `${baseUrl}/${locale}`;
   
@@ -27,7 +28,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function Home({ params: { locale } }: { params: { locale: string } }) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const isZh = locale === 'zh-Hant';
   const isEn = locale === 'en';
   const isFr = locale === 'fr';

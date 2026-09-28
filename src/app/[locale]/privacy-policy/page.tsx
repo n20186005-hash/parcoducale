@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 
 const baseUrl = 'https://www.parcoducale.com';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const path = '/privacy-policy';
   const canonicalUrl = locale === 'it' ? `${baseUrl}${path}` : `${baseUrl}/${locale}${path}`;
   
@@ -72,7 +73,8 @@ const content = {
   }
 };
 
-export default function PrivacyPolicy({ params: { locale } }: { params: { locale: string } }) {
+export default function PrivacyPolicy({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const lang = (locale === 'zh-Hant' || locale === 'fr' || locale === 'it') ? locale : 'en';
   const t = content[lang];
 
