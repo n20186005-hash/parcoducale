@@ -1,27 +1,19 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-
-const baseUrl = 'https://www.parcoducale.com';
+import { getCanonicalUrl, getLanguageAlternates } from '@/lib/site';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const path = '/terms-of-service';
-  const canonicalUrl = locale === 'it' ? `${baseUrl}${path}` : `${baseUrl}/${locale}${path}`;
   
   return {
-    title: locale === 'zh-Hant' ? '服務條款 | Parco Ducale' : 
-           locale === 'fr' ? 'Conditions d\'utilisation | Parco Ducale' :
-           locale === 'it' ? 'Termini di servizio | Parco Ducale' : 
-           'Terms of Service | Parco Ducale',
+    title: locale === 'zh-Hant' ? '服務條款' :
+           locale === 'fr' ? 'Conditions d\'utilisation' :
+           locale === 'it' ? 'Termini di servizio' :
+           'Terms of Service',
     alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        'en': `${baseUrl}/en${path}`,
-        'zh-Hant': `${baseUrl}/zh-Hant${path}`,
-        'fr': `${baseUrl}/fr${path}`,
-        'it': `${baseUrl}${path}`,
-        'x-default': `${baseUrl}${path}`,
-      },
+      canonical: getCanonicalUrl(locale, path),
+      languages: getLanguageAlternates(path),
     },
   };
 }

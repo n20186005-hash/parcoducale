@@ -47,13 +47,6 @@ body {
 .accent-bg { background-color: var(--accent); }
 .accent-light-bg { background-color: var(--accent-light); }
 
-/* ===== Hide Google Maps Attribution ===== */
-/* Warning: Hiding attribution may violate Google Maps ToS. Use at your own risk. */
-.gm-style-cc,
-.gmnoprint {
-  display: none !important;
-}
-
 /* ===== Section Spacing (Minimalist) ===== */
 section {
   padding: 4rem 0;

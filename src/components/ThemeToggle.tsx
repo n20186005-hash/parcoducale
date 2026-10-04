@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ label = 'Toggle theme' }: { label?: string }) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function ThemeToggle() {
     <button 
       onClick={toggleTheme}
       className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 transition-all flex items-center justify-center w-10 h-10"
-      aria-label="Toggle theme"
+      aria-label={label}
     >
       {theme === 'light' ? (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
