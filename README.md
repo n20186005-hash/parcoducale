@@ -69,9 +69,10 @@ Workers Builds supplies `WORKERS_CI_BRANCH`; local publication falls back to the
 current Git branch. Branch names are normalized into stable Preview names with
 a short hash so names remain distinct after sanitization.
 
-After changing the non-production command, verify a newly triggered branch
-build reports `npm run preview:cloudflare` before relying on its result.
-A retry of a previous build can retain that build's original command snapshot.
+The dashboard Preview Base command applies to future Previews. Existing branch
+Previews keep their own build settings, so update that branch Preview’s command
+as well. Verify its next build reports `npm run preview:cloudflare` before
+relying on the result. See the [Workers Builds API reference](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/).
 
 Preview safety checks:
 
