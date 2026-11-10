@@ -65,6 +65,14 @@ This static Preview does not exercise the production OpenNext/SSR runtime.
 Production acceptance must separately verify the exact deployed commit,
 new pages, assets, metadata and redirects on the production domain.
 
+Workers Builds supplies `WORKERS_CI_BRANCH`; local publication falls back to the
+current Git branch. Branch names are normalized into stable Preview names with
+a short hash so names remain distinct after sanitization.
+
+After changing the non-production command, verify a newly triggered branch
+build reports `npm run preview:cloudflare` before relying on its result.
+A retry of a previous build can retain that build's original command snapshot.
+
 Preview safety checks:
 
     node --test scripts/preview-cloudflare.test.mjs
