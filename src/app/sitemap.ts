@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import { MetadataRoute } from 'next';
 import { guideSlugs } from '@/lib/nearby';
 import { getLanguageAlternates, getCanonicalUrl, locales } from '@/lib/site';
