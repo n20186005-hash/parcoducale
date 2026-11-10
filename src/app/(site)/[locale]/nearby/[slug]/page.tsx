@@ -7,7 +7,7 @@ import { baseUrl, getCanonicalUrl, getLanguageAlternates, isValidLocale, locales
 import { checkedDate, guideContent, guideMeta, guideSlugs, isGuideSlug, labels, sourceLabel } from '@/lib/nearby';
 
 type Params = { params: Promise<{locale: string; slug: string}> };
-export const dynamicParams = false;
+// Keep validated routes renderable when the production adapter has no cached page.
 export function generateStaticParams() { return guideSlugs.map(slug=>({slug})); }
 export async function generateMetadata({params}: Params): Promise<Metadata> {
  const {locale,slug}=await params;
