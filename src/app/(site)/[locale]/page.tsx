@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Gallery from '@/components/Gallery';
+import NearbyGuideCards from '@/components/NearbyGuideCards';
+import { labels as nearbyLabels } from '@/lib/nearby';
 import ThemeToggle from '@/components/ThemeToggle';
 import {
   SiteLocale,
@@ -168,7 +170,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: 'Novità 2026',
     updateText:
-      "Nel 2026 continuano gli interventi pubblici legati alla Peschiera e alla Fontana del Trianon. Per questo motivo alcune aree possono presentare lavori, transenne o accessi temporaneamente modificati.",
+      "Il Comune di Parma ha annunciato il 28 luglio 2026 la conclusione del restauro della Fontana del Trianon e della riqualificazione della Peschiera, con il ripristino della fontana. Per manutenzioni o eventi successivi consulta gli avvisi del Comune.",
     nearbyTitle: 'Cosa vedere vicino al parco',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'Grande complesso monumentale con musei, teatro e biblioteca, comodo da abbinare alla visita.' },
@@ -185,7 +187,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { question: 'Come arrivare dalla stazione?', answer: "Si può arrivare a piedi in circa 20-25 minuti oppure usare il trasporto urbano verso l'Oltretorrente." },
     ],
     galleryTitle: 'Galleria fotografica',
-    galleryText: 'Una selezione di immagini del parco per orientarsi tra viali, acqua, statue e scorci verdi.',
+    galleryText: 'Fotografie conservate del parco e del suo contesto urbano: viali, acqua, sculture, architettura e dettagli naturali.',
     galleryLinkLabel: 'Apri la scheda su Google Maps',
     mapTitle: 'Mappa e posizione',
     mapText: 'Il parco si trova nel quartiere Oltretorrente, in posizione molto comoda sia dal centro sia dalla stazione.',
@@ -263,7 +265,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: '2026 update',
     updateText:
-      'Public works connected to the Peschiera and Fontana del Trianon continued during 2026, so some areas may look different or have temporary access changes.',
+      'On 28 July 2026, Parma municipality announced completion of the Peschiera improvements and restoration of Fontana del Trianon, with the fountain returned to operation. Check municipal notices for later maintenance or event changes.',
     nearbyTitle: 'What to see nearby',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'A major museum and theatre complex within easy reach.' },
@@ -280,7 +282,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { question: 'How do you get there from the station?', answer: 'Walk for about 20-25 minutes or use local transport toward Oltretorrente.' },
     ],
     galleryTitle: 'Photo gallery',
-    galleryText: 'A visual overview of paths, fountains, greenery and the historic atmosphere of the park.',
+    galleryText: 'Retained photographs of the park and its urban surroundings: avenues, water, sculptures, architecture and natural details.',
     galleryLinkLabel: 'Open the place on Google Maps',
     mapTitle: 'Map and location',
     mapText: 'The park sits in Parma’s Oltretorrente district, a short walk from the historic center.',
@@ -358,7 +360,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: 'Mise à jour 2026',
     updateText:
-      'Les interventions publiques autour de la Peschiera et de la Fontana del Trianon se sont poursuivies en 2026, avec des changements ponctuels sur certaines zones.',
+      'Le 28 juillet 2026, la municipalité de Parme a annoncé la fin des travaux de la Peschiera et de la restauration de la Fontana del Trianon, remise en fonctionnement. Consultez les avis municipaux pour les changements ultérieurs.',
     nearbyTitle: 'À voir à proximité',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'Grand complexe culturel avec musées et théâtre.' },
@@ -375,7 +377,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { question: 'Comment venir depuis la gare ?', answer: 'À pied en 20 à 25 minutes, ou avec un transport urbain vers l’Oltretorrente.' },
     ],
     galleryTitle: 'Galerie photos',
-    galleryText: 'Quelques images pour repérer les allées, les fontaines et l’ambiance du parc.',
+    galleryText: 'Photographies conservées du parc et de son contexte urbain : allées, eau, sculptures, architecture et détails naturels.',
     galleryLinkLabel: 'Ouvrir le lieu dans Google Maps',
     mapTitle: 'Carte et emplacement',
     mapText: 'Le parc se trouve dans le quartier Oltretorrente, très proche du centre historique de Parme.',
@@ -453,7 +455,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: '2026 最新動態',
     updateText:
-      '2026 年與 Peschiera、Fontana del Trianon 相關的市政整修工程仍是重要議題，因此部分區域可能出現施工、圍欄或動線調整。',
+      '帕爾馬市政府於 2026 年 7 月 28 日宣布 Peschiera 水池整治與 Fontana del Trianon 噴泉修復完成，噴泉恢復運作。後續保養或活動變動請查閱市府公告。',
     nearbyTitle: '附近還能看什麼',
     nearby: [
       { name: 'Palazzo della Pilotta', text: '大型文化建築群，可與公園安排成同一段散步路線。' },
@@ -470,7 +472,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { question: '從車站怎麼去？', answer: '步行約 20-25 分鐘，或先搭市區交通到 Oltretorrente。' },
     ],
     galleryTitle: '照片集',
-    galleryText: '用幾張照片先快速認識公園的水景、步道、雕塑與綠地氣氛。',
+    galleryText: '保留公園與周邊市區照片，呈現林蔭大道、水景、雕塑、建築和自然細節。',
     galleryLinkLabel: '在 Google Maps 開啟地點',
     mapTitle: '地圖與位置',
     mapText: '公園位於帕爾馬 Oltretorrente 區，從老城步行就能抵達。',
@@ -796,6 +798,7 @@ export default async function Home({
           <article className="rounded-3xl border border-theme bg-bg-secondary p-8 shadow-sm">
             <h2 className="text-3xl font-bold">{page.updateTitle}</h2>
             <p className="mt-6 text-secondary leading-relaxed">{page.updateText}</p>
+            <a href="https://www.comune.parma.it/it/novita/notizie/parco-ducale-conclusi-gli-interventi-di-riqualificazione-della-peschiera-e-di-restauro-della-fontana-del-trianon" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-accent underline">Comune di Parma · 28/07/2026 ↗</a>
           </article>
         </div>
       </section>
@@ -813,6 +816,11 @@ export default async function Home({
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 md:px-8">
+        <h2 className="mb-8 text-3xl font-bold">{nearbyLabels[safeLocale].nearby}</h2>
+        <NearbyGuideCards locale={safeLocale} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 md:px-8">

@@ -210,3 +210,9 @@ html {
   height: 100%;
   border: 0;
 }
+
+/* Nearby attraction guides */
+.nearby-guide .guide-section { padding: 2.75rem 0; scroll-margin-top: 1rem; }
+.nearby-guide p, .nearby-guide li, .nearby-guide dd { overflow-wrap: anywhere; }
+.nearby-guide summary { min-height: 2rem; }
+.nearby-guide a:focus-visible, .nearby-guide summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
