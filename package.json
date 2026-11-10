@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview:cloudflare": "node scripts/preview-cloudflare.mjs"
   },
   "dependencies": {
     "next": "16.3.6",

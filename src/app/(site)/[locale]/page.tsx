@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Gallery from '@/components/Gallery';
+import NearbyGuideCards from '@/components/NearbyGuideCards';
+import { labels as nearbyLabels } from '@/lib/nearby';
 import ThemeToggle from '@/components/ThemeToggle';
 import {
   SiteLocale,
@@ -66,7 +68,7 @@ const address = 'Largo Luca Ganzi, 3, 43126 Parma PR, Italy';
 const mapsUrl = 'https://maps.app.goo.gl/RAE49mVnrSMnbSWC8';
 const tourismPhone = '+39 0521 218889';
 const ratingText = '4.4/5';
-const reviewCountText = '5,352';
+const reviewCountText = '5,376';
 
 const content: Record<SiteLocale, HomeContent> = {
   it: {
@@ -83,7 +85,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'Ingresso', value: 'Gratuito' },
       { label: 'Indirizzo', value: address },
       { label: 'Durata visita', value: '45-90 minuti' },
-      { label: 'Valutazione Google', value: `${ratingText} (${reviewCountText} recensioni, verifica ottobre 2026)` },
+      { label: 'Valutazione Google', value: `${ratingText} (${reviewCountText} recensioni, verifica 10 novembre 2026)` },
       { label: 'Contatto turistico', value: tourismPhone },
     ],
     introTitle: 'Perché visitarlo',
@@ -97,7 +99,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'Novembre-Marzo', value: '07:00-20:00' },
     ],
     hoursNote:
-      "Gli orari sono stagionali e possono cambiare in occasione di eventi o manutenzioni. Prima della visita conviene verificare eventuali avvisi del Comune di Parma.",
+      "Parma Welcome pubblica gli orari stagionali sopra indicati. Il 10 novembre 2026 Google Maps mostrava invece 06:00-24:00 ogni giorno; anche la tabella settimanale di Parma Welcome differiva dal suo testo stagionale. Per una visita presto al mattino o in serata verifica gli avvisi del Comune e gli orari esposti agli ingressi.",
     admissionTitle: 'Ingresso e prezzi',
     admissionText:
       "L'accesso al parco è gratuito. Per edifici o spazi vicini, come il Palazzo del Giardino o il Palazzetto Eucherio Sanvitale, possono valere regole e aperture separate.",
@@ -168,7 +170,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: 'Novità 2026',
     updateText:
-      "Nel 2026 continuano gli interventi pubblici legati alla Peschiera e alla Fontana del Trianon. Per questo motivo alcune aree possono presentare lavori, transenne o accessi temporaneamente modificati.",
+      "Il Comune di Parma ha annunciato il 28 luglio 2026 la conclusione del restauro della Fontana del Trianon e della riqualificazione della Peschiera, con il ripristino della fontana. Per manutenzioni o eventi successivi consulta gli avvisi del Comune.",
     nearbyTitle: 'Cosa vedere vicino al parco',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'Grande complesso monumentale con musei, teatro e biblioteca, comodo da abbinare alla visita.' },
@@ -178,14 +180,14 @@ const content: Record<SiteLocale, HomeContent> = {
     faqTitle: 'Domande frequenti',
     faqs: [
       { question: 'Quanto costa entrare al Parco Ducale?', answer: "L'ingresso al Parco Ducale è gratuito." },
-      { question: 'Quali sono gli orari del Parco Ducale?', answer: 'Da aprile a ottobre 06:00-24:00; da novembre a marzo 07:00-20:00.' },
+      { question: 'Quali sono gli orari del Parco Ducale?', answer: 'Parma Welcome indica aprile-ottobre 06:00-24:00 e novembre-marzo 07:00-20:00. Le tabelle online differiscono: controlla gli avvisi e gli orari agli ingressi prima di una visita presto o in serata.' },
       { question: 'Quanto tempo serve per visitarlo?', answer: 'Per una visita tranquilla bastano in genere da 45 a 90 minuti.' },
       { question: 'Il Parco Ducale è adatto ai bambini?', answer: 'Sì, è uno dei luoghi più semplici e piacevoli di Parma per una passeggiata in famiglia.' },
       { question: 'I cani sono ammessi?', answer: 'In linea generale sì, ma conviene seguire la segnaletica locale e tenere il cane al guinzaglio.' },
       { question: 'Come arrivare dalla stazione?', answer: "Si può arrivare a piedi in circa 20-25 minuti oppure usare il trasporto urbano verso l'Oltretorrente." },
     ],
     galleryTitle: 'Galleria fotografica',
-    galleryText: 'Una selezione di immagini del parco per orientarsi tra viali, acqua, statue e scorci verdi.',
+    galleryText: 'Fotografie conservate del parco e del suo contesto urbano: viali, acqua, sculture, architettura e dettagli naturali.',
     galleryLinkLabel: 'Apri la scheda su Google Maps',
     mapTitle: 'Mappa e posizione',
     mapText: 'Il parco si trova nel quartiere Oltretorrente, in posizione molto comoda sia dal centro sia dalla stazione.',
@@ -214,7 +216,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'Admission', value: 'Free' },
       { label: 'Address', value: address },
       { label: 'Visit time', value: '45-90 minutes' },
-      { label: 'Google rating', value: `${ratingText} (${reviewCountText} reviews, checked October 2026)` },
+      { label: 'Google rating', value: `${ratingText} (${reviewCountText} reviews, checked 10 November 2026)` },
       { label: 'Tourism contact', value: tourismPhone },
     ],
     introTitle: 'Why visit',
@@ -228,7 +230,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'November-March', value: '7:00 AM-8:00 PM' },
     ],
     hoursNote:
-      'Opening hours are seasonal and may change during events or maintenance periods. Check current local notices before a special visit.',
+      'Parma Welcome publishes the seasonal hours shown above. On 10 November 2026, Google Maps instead showed 6:00 AM-midnight every day, and Parma Welcome’s weekly table also differed from its seasonal text. For an early or evening visit, check municipal notices and the hours posted at the park gates.',
     admissionTitle: 'Entry and prices',
     admissionText:
       'Park access is free. Nearby buildings such as Palazzo del Giardino or Palazzetto Eucherio Sanvitale may follow separate opening rules.',
@@ -263,7 +265,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: '2026 update',
     updateText:
-      'Public works connected to the Peschiera and Fontana del Trianon continued during 2026, so some areas may look different or have temporary access changes.',
+      'On 28 July 2026, Parma municipality announced completion of the Peschiera improvements and restoration of Fontana del Trianon, with the fountain returned to operation. Check municipal notices for later maintenance or event changes.',
     nearbyTitle: 'What to see nearby',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'A major museum and theatre complex within easy reach.' },
@@ -273,14 +275,14 @@ const content: Record<SiteLocale, HomeContent> = {
     faqTitle: 'FAQ',
     faqs: [
       { question: 'Is Parco Ducale free?', answer: 'Yes. Entry to the park is free.' },
-      { question: 'What are the opening hours?', answer: 'April-October 6:00 AM-12:00 AM; November-March 7:00 AM-8:00 PM.' },
+      { question: 'What are the opening hours?', answer: 'Parma Welcome lists April-October 6:00 AM-midnight and November-March 7:00 AM-8:00 PM. Online timetables differ, so check notices and gate hours before an early or evening visit.' },
       { question: 'How long do you need?', answer: 'A relaxed visit usually takes 45-90 minutes.' },
       { question: 'Is it good for children?', answer: 'Yes. It is one of the easiest green stops in Parma for families.' },
       { question: 'Are dogs allowed?', answer: 'Generally yes, with a leash and respect for local rules.' },
       { question: 'How do you get there from the station?', answer: 'Walk for about 20-25 minutes or use local transport toward Oltretorrente.' },
     ],
     galleryTitle: 'Photo gallery',
-    galleryText: 'A visual overview of paths, fountains, greenery and the historic atmosphere of the park.',
+    galleryText: 'Retained photographs of the park and its urban surroundings: avenues, water, sculptures, architecture and natural details.',
     galleryLinkLabel: 'Open the place on Google Maps',
     mapTitle: 'Map and location',
     mapText: 'The park sits in Parma’s Oltretorrente district, a short walk from the historic center.',
@@ -309,7 +311,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'Entrée', value: 'Gratuite' },
       { label: 'Adresse', value: address },
       { label: 'Durée de visite', value: '45-90 minutes' },
-      { label: 'Note Google', value: `${ratingText} (${reviewCountText} avis, vérifié en octobre 2026)` },
+      { label: 'Note Google', value: `${ratingText} (${reviewCountText} avis, vérifié le 10 novembre 2026)` },
       { label: 'Contact tourisme', value: tourismPhone },
     ],
     introTitle: 'Pourquoi visiter',
@@ -323,7 +325,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: 'Novembre-Mars', value: '07:00-20:00' },
     ],
     hoursNote:
-      'Les horaires sont saisonniers et peuvent changer pendant des travaux, des événements ou des fermetures exceptionnelles.',
+      'Parma Welcome publie les horaires saisonniers ci-dessus. Le 10 novembre 2026, Google Maps indiquait toutefois 06:00-24:00 tous les jours, et le tableau hebdomadaire de Parma Welcome différait aussi de son texte saisonnier. Pour une visite tôt le matin ou en soirée, consultez les avis municipaux et les horaires affichés aux entrées.',
     admissionTitle: 'Entrée et tarifs',
     admissionText:
       'L’accès au parc est gratuit. Les bâtiments voisins peuvent avoir des horaires et des règles de visite distincts.',
@@ -358,7 +360,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: 'Mise à jour 2026',
     updateText:
-      'Les interventions publiques autour de la Peschiera et de la Fontana del Trianon se sont poursuivies en 2026, avec des changements ponctuels sur certaines zones.',
+      'Le 28 juillet 2026, la municipalité de Parme a annoncé la fin des travaux de la Peschiera et de la restauration de la Fontana del Trianon, remise en fonctionnement. Consultez les avis municipaux pour les changements ultérieurs.',
     nearbyTitle: 'À voir à proximité',
     nearby: [
       { name: 'Palazzo della Pilotta', text: 'Grand complexe culturel avec musées et théâtre.' },
@@ -368,14 +370,14 @@ const content: Record<SiteLocale, HomeContent> = {
     faqTitle: 'Questions fréquentes',
     faqs: [
       { question: 'L’entrée du Parco Ducale est-elle gratuite ?', answer: 'Oui, l’entrée du parc est gratuite.' },
-      { question: 'Quels sont les horaires ?', answer: 'Avril-octobre 06:00-24:00 ; novembre-mars 07:00-20:00.' },
+      { question: 'Quels sont les horaires ?', answer: 'Parma Welcome indique 06:00-24:00 d’avril à octobre et 07:00-20:00 de novembre à mars. Les tableaux en ligne diffèrent : vérifiez les avis et les horaires aux entrées avant une visite tôt ou en soirée.' },
       { question: 'Combien de temps prévoir ?', answer: 'Une visite tranquille dure généralement entre 45 et 90 minutes.' },
       { question: 'Le parc convient-il aux enfants ?', answer: 'Oui, c’est une promenade facile et agréable pour les familles.' },
       { question: 'Les chiens sont-ils admis ?', answer: 'En principe oui, avec laisse et respect des règles locales.' },
       { question: 'Comment venir depuis la gare ?', answer: 'À pied en 20 à 25 minutes, ou avec un transport urbain vers l’Oltretorrente.' },
     ],
     galleryTitle: 'Galerie photos',
-    galleryText: 'Quelques images pour repérer les allées, les fontaines et l’ambiance du parc.',
+    galleryText: 'Photographies conservées du parc et de son contexte urbain : allées, eau, sculptures, architecture et détails naturels.',
     galleryLinkLabel: 'Ouvrir le lieu dans Google Maps',
     mapTitle: 'Carte et emplacement',
     mapText: 'Le parc se trouve dans le quartier Oltretorrente, très proche du centre historique de Parme.',
@@ -404,7 +406,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: '門票', value: '免費' },
       { label: '地址', value: address },
       { label: '建議停留', value: '45-90 分鐘' },
-      { label: 'Google 評分', value: `${ratingText}（${reviewCountText} 則評論，最後核對 2026 年 10 月）` },
+      { label: 'Google 評分', value: `${ratingText}（${reviewCountText} 則評論，最後核對 2026 年 11 月 10 日）` },
       { label: '旅遊聯絡', value: tourismPhone },
     ],
     introTitle: '值得去的原因',
@@ -418,7 +420,7 @@ const content: Record<SiteLocale, HomeContent> = {
       { label: '11 月-3 月', value: '07:00-20:00' },
     ],
     hoursNote:
-      '開放時間為季節制，若遇到活動、維護或市政工程，現場動線與實際進出時間可能調整。',
+      '上方季節時間來自 Parma Welcome 的文字說明；2026 年 11 月 10 日 Google Maps 顯示每日 06:00-24:00，Parma Welcome 的每週時間表也與其季節文字不同。若要清晨或晚間前往，請確認市政府公告與公園入口張貼的時間。',
     admissionTitle: '入園與費用',
     admissionText:
       '公園本身免費開放。周邊歷史建築若另有開放時段或參觀規則，通常會獨立公告。',
@@ -453,7 +455,7 @@ const content: Record<SiteLocale, HomeContent> = {
     ],
     updateTitle: '2026 最新動態',
     updateText:
-      '2026 年與 Peschiera、Fontana del Trianon 相關的市政整修工程仍是重要議題，因此部分區域可能出現施工、圍欄或動線調整。',
+      '帕爾馬市政府於 2026 年 7 月 28 日宣布 Peschiera 水池整治與 Fontana del Trianon 噴泉修復完成，噴泉恢復運作。後續保養或活動變動請查閱市府公告。',
     nearbyTitle: '附近還能看什麼',
     nearby: [
       { name: 'Palazzo della Pilotta', text: '大型文化建築群，可與公園安排成同一段散步路線。' },
@@ -463,14 +465,14 @@ const content: Record<SiteLocale, HomeContent> = {
     faqTitle: '常見問題',
     faqs: [
       { question: 'Parco Ducale 要門票嗎？', answer: '不用，公園免費入園。' },
-      { question: 'Parco Ducale 幾點開？', answer: '4-10 月 06:00-24:00；11-3 月 07:00-20:00。' },
+      { question: 'Parco Ducale 幾點開？', answer: 'Parma Welcome 文字列為 4-10 月 06:00-24:00、11-3 月 07:00-20:00；線上時間表有出入，清晨或晚間前往請先確認公告與入口時間。' },
       { question: '大概要待多久？', answer: '一般輕鬆走一圈大約 45-90 分鐘。' },
       { question: '適合帶小孩嗎？', answer: '很適合，是帕爾馬市區相當容易安排的親子綠地。' },
       { question: '可以帶狗嗎？', answer: '通常可以，但建議全程牽繩並遵守現場規定。' },
       { question: '從車站怎麼去？', answer: '步行約 20-25 分鐘，或先搭市區交通到 Oltretorrente。' },
     ],
     galleryTitle: '照片集',
-    galleryText: '用幾張照片先快速認識公園的水景、步道、雕塑與綠地氣氛。',
+    galleryText: '保留公園與周邊市區照片，呈現林蔭大道、水景、雕塑、建築和自然細節。',
     galleryLinkLabel: '在 Google Maps 開啟地點',
     mapTitle: '地圖與位置',
     mapText: '公園位於帕爾馬 Oltretorrente 區，從老城步行就能抵達。',
@@ -741,6 +743,10 @@ export default async function Home({
               ))}
             </div>
             <p className="mt-5 text-secondary leading-relaxed">{page.hoursNote}</p>
+            <p className="mt-3 flex gap-4 text-sm text-secondary">
+              <a href="https://parmawelcome.it/scheda/parco-ducale/" target="_blank" rel="noopener noreferrer" className="underline">Parma Welcome</a>
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="underline">Google Maps</a>
+            </p>
           </article>
 
           <article className="rounded-3xl border border-theme bg-bg-secondary p-8 shadow-sm">
@@ -796,6 +802,7 @@ export default async function Home({
           <article className="rounded-3xl border border-theme bg-bg-secondary p-8 shadow-sm">
             <h2 className="text-3xl font-bold">{page.updateTitle}</h2>
             <p className="mt-6 text-secondary leading-relaxed">{page.updateText}</p>
+            <a href="https://www.comune.parma.it/it/novita/notizie/parco-ducale-conclusi-gli-interventi-di-riqualificazione-della-peschiera-e-di-restauro-della-fontana-del-trianon" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-accent underline">Comune di Parma · 28/07/2026 ↗</a>
           </article>
         </div>
       </section>
@@ -813,6 +820,11 @@ export default async function Home({
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 md:px-8">
+        <h2 className="mb-8 text-3xl font-bold">{nearbyLabels[safeLocale].nearby}</h2>
+        <NearbyGuideCards locale={safeLocale} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 md:px-8">

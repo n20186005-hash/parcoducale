@@ -34,3 +34,46 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Cloudflare branch Previews
+
+Production keeps the existing `npm run build` and `npx wrangler deploy` flow.
+There is intentionally no default Wrangler configuration in this repository,
+so Cloudflare can continue its automatic Next.js/OpenNext configuration.
+Do not rename `wrangler.preview.jsonc` to a default Wrangler filename.
+
+For the non-production branch deployment command, use:
+
+    npm run preview:cloudflare
+
+This creates a static export for content and navigation review and passes the
+explicit preview-only configuration to Wrangler. It refuses production or
+unknown branches, configures no application resource bindings, and adds
+`X-Robots-Tag: noindex, nofollow` only to the generated Preview assets.
+New Previews ignore the dashboard Base configuration; this does not promise to
+remove settings or secrets from an already-existing same-named Preview.
+
+To build the Preview assets locally without publishing:
+
+    npm run preview:cloudflare -- --prepare-only
+
+Unknown arguments, including `--dry-run`, are rejected before build or publish.
+The normal production build remains standalone unless the script explicitly
+sets `PARCODUCALE_STATIC_PREVIEW=1` for its child build process.
+
+This static Preview does not exercise the production OpenNext/SSR runtime.
+Production acceptance must separately verify the exact deployed commit,
+new pages, assets, metadata and redirects on the production domain.
+
+Workers Builds supplies `WORKERS_CI_BRANCH`; local publication falls back to the
+current Git branch. Branch names are normalized into stable Preview names with
+a short hash so names remain distinct after sanitization.
+
+The dashboard Preview Base command applies to future Previews. Existing branch
+Previews keep their own build settings, so update that branch Preview’s command
+as well. Verify its next build reports `npm run preview:cloudflare` before
+relying on the result. See the [Workers Builds API reference](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/).
+
+Preview safety checks:
+
+    node --test scripts/preview-cloudflare.test.mjs

@@ -4,7 +4,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: process.env.PARCODUCALE_STATIC_PREVIEW === '1' ? 'export' : 'standalone',
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
