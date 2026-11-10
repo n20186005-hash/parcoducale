@@ -39,7 +39,7 @@ export default async function NearbyGuide({params}: Params) {
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(json).replace(/</g,'\\u003c')}}/>
   <header className="border-b border-theme bg-primary px-4 py-5 md:px-8"><div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4">
    <Link href={`/${locale}`} className="font-bold tracking-widest">PARCO DUCALE</Link>
-   <div className="flex flex-wrap items-center gap-4"><ThemeToggle label={t.theme}/><nav aria-label="Language" className="flex flex-wrap gap-3 text-sm">{locales.map(l=><Link key={l} href={`/${l}${path}`} hrefLang={l} aria-current={l===locale?'page':undefined} className={l===locale?'font-bold text-accent':'hover:underline'}>{l==='zh-Hant'?'繁中':l.toUpperCase()}</Link>)}</nav></div>
+   <div className="flex flex-wrap items-center gap-4"><span className="rounded-full bg-neutral-800"><ThemeToggle label={t.theme}/></span><nav aria-label="Language" className="flex flex-wrap gap-3 text-sm">{locales.map(l=><Link key={l} href={`/${l}${path}`} hrefLang={l} aria-current={l===locale?'page':undefined} className={l===locale?'font-bold text-accent':'hover:underline'}>{l==='zh-Hant'?'繁中':l.toUpperCase()}</Link>)}</nav></div>
   </div></header>
   <section className="relative flex min-h-[65vh] items-end overflow-hidden bg-gray-900 text-white">
    {/* eslint-disable-next-line @next/next/no-img-element */}
